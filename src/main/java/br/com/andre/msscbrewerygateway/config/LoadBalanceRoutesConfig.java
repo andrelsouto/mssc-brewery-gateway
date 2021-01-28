@@ -25,12 +25,12 @@ public class LoadBalanceRoutesConfig {
                 .route(r -> r.path(
                         "/api/v1/beer/*/inventory*")
                         .filters(f -> f.circuitBreaker(c -> c.setName("inventoryCB")
-                                .setFallbackUri("forward:/inventory-failover")
+                                .setFallbackUri("forward:/inventory-failover-service")
                                 .setRouteId("inv-failover")))
                         .uri("lb://beer-inventory-service"))
                 .route(r -> r.path(
                         "/inventory-failover**")
-                        .uri("lb://inventory-failover"))
+                        .uri("lb://inventory-failover-service"))
                 .build();
     }
 
