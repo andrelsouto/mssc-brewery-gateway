@@ -21,10 +21,10 @@ public class LoadBalanceRoutesConfig {
                 .route(r -> r.path(
                         "/api/v1/customers",
                         "/api/v1/customers/**")
-                .uri("lb://beer-order-service"))
+                        .uri("lb://beer-order-service"))
                 .route(r -> r.path(
                         "/api/v1/beer/*/inventory*")
-                .uri("lb://beer-inventory-service"))
+                        .uri("lb://beer-inventory-service"))
                 .build();
     }
 
